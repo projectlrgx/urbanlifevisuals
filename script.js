@@ -33,27 +33,25 @@ const countObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 document.querySelectorAll('.stat__num').forEach(el => countObserver.observe(el));
 
-// ---- Interactive ROI estimator ----
+// ---- Package quote builder (PLACEHOLDER rates — set your real pricing here) ----
 const $ = id => document.getElementById(id);
-const budget = $('budget'), cpl = $('cpl'), closeR = $('close'), value = $('value');
+const RATE_PER_SHOOTER_HOUR = 150, RATE_PER_PHOTO = 3, RATE_PER_VIDEO_MIN = 150;
+const hours = $('hours'), shooters = $('shooters'), photos = $('photos'), video = $('video');
 const fmt = n => '$' + Math.round(n).toLocaleString();
-function calcROI() {
-  const b = +budget.value, c = +cpl.value, cl = +closeR.value / 100, v = +value.value;
-  const leads = b / c;
-  const customers = leads * cl;
-  const revenue = customers * v;
-  const roas = revenue / b;
-  $('outBudget').textContent = fmt(b);
-  $('outCpl').textContent = fmt(c);
-  $('outClose').textContent = closeR.value + '%';
-  $('outValue').textContent = fmt(v);
-  $('resLeads').textContent = Math.round(leads);
-  $('resCust').textContent = Math.round(customers);
-  $('resRev').textContent = fmt(revenue);
-  $('resRoas').textContent = roas.toFixed(1) + 'x';
+function calcQuote() {
+  const h = +hours.value, sh = +shooters.value, ph = +photos.value, v = +video.value;
+  const total = h * sh * RATE_PER_SHOOTER_HOUR + ph * RATE_PER_PHOTO + v * RATE_PER_VIDEO_MIN;
+  const weeks = Math.max(1, Math.ceil(ph / 250 + v / 10));
+  $('outHours').textContent = h + (h === 1 ? ' hr' : ' hrs');
+  $('outShooters').textContent = sh;
+  $('outPhotos').textContent = ph;
+  $('outVideo').textContent = v + ' min';
+  $('resTotal').textContent = fmt(total);
+  $('resDeliv').textContent = ph + (v ? ' + 1' : '');
+  $('resTurn').textContent = weeks + (weeks === 1 ? ' wk' : ' wks');
 }
-[budget, cpl, closeR, value].forEach(s => s.addEventListener('input', calcROI));
-calcROI();
+[hours, shooters, photos, video].forEach(s => s.addEventListener('input', calcQuote));
+calcQuote();
 
 // ---- Lightbox ----
 const lb = $('lightbox'), lbImg = $('lightboxImg'), lbCap = $('lightboxCap'), lbClose = $('lightboxClose');
