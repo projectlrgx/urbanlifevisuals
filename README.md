@@ -29,7 +29,7 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 ## Customize before going live
 - Replace placeholder **stats** in `index.html` with real numbers
 - Set real **pricing** at the top of the quote builder in `script.js`
-- Update **contact** info: `hello@urbanlifevisuals.com`, `(555) 555-5555`
+- ~~Update **contact** info~~ — done: `erwinurbano@urbanlifevisuals.com`, `(707) 704-9567`
 - Wire the **booking form** to a service (Formspree/Netlify) — currently front-end only
 - Swap **Selected Work** images for real portfolio shots
 
