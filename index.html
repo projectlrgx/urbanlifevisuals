@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <!-- NAV -->
 <header class="nav" id="nav">
@@ -26,41 +27,33 @@
       <a href="#estimator">Get a Quote</a>
       <a href="#contact" class="btn btn--cyan btn--sm">Book Now</a>
     </nav>
-    <button class="nav__toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
   </div>
 </header>
 
+<main id="main">
+
 <!-- HERO -->
 <section class="hero" id="top">
-  <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="assets/hero-reel-poster.jpg">
+  <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/hero-reel-poster.jpg" aria-hidden="true">
     <source src="assets/hero-reel.mp4" type="video/mp4" />
   </video>
   <div class="hero__scrim"></div>
   <div class="container hero__inner">
     <p class="status"><span class="status__dot"></span>Now_Booking: Weddings · Events · Corporate · Creative</p>
     <h1 class="hero__title">Film. Photography.<br /><span class="grad">Every story, captured.</span></h1>
-    <p class="hero__sub">Urbanlifevisuals is a multimedia studio led by a filmmaker and photographer. Weddings, corporate shoots, events, portraits, commercials, music videos, drone — if it needs to be filmed or photographed, we shoot it, edit it, and deliver it ready to share.</p>
+    <p class="hero__sub">Urbanlifevisuals is a multimedia studio led by filmmaker and photographer Erwin Urbano. Weddings, corporate shoots, events, portraits, commercials, music videos, drone — if it needs to be filmed or photographed, we shoot it, edit it, and deliver it ready to share.</p>
     <div class="hero__cta">
       <a href="#contact" class="btn btn--cyan">Book Your Shoot →</a>
       <a href="#work" class="btn btn--ghost">View Our Work</a>
     </div>
   </div>
-  <a href="#stats" class="hero__scroll" aria-label="Scroll down">↓</a>
-</section>
-
-<!-- STATS -->
-<section class="stats" id="stats">
-  <div class="container stats__grid">
-    <!-- PLACEHOLDER numbers — replace with real totals -->
-    <div class="stat reveal"><div class="stat__num" data-count="150" data-suffix="+">0</div><div class="stat__lbl">Shoots completed</div></div>
-    <div class="stat reveal"><div class="stat__num" data-count="60" data-suffix="+">0</div><div class="stat__lbl">Weddings &amp; events filmed</div></div>
-    <div class="stat reveal"><div class="stat__num" data-count="40" data-suffix="+">0</div><div class="stat__lbl">Brands &amp; businesses served</div></div>
-    <div class="stat reveal"><div class="stat__num" data-count="25" data-suffix="K+">0</div><div class="stat__lbl">Photos delivered</div></div>
-  </div>
+  <button class="motion-toggle" id="motionToggle" type="button" aria-pressed="false">❚❚ Pause motion</button>
+  <a href="#services" class="hero__scroll" aria-label="Scroll to services">↓</a>
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee" aria-hidden="true">
+<div class="marquee" id="marquee" aria-hidden="true">
   <div class="marquee__track">
     <span>Weddings</span><span>•</span><span>Cinematic Films</span><span>•</span><span>Corporate</span><span>•</span><span>Events</span><span>•</span><span>Portraits</span><span>•</span><span>Headshots</span><span>•</span><span>Commercials</span><span>•</span><span>Music Videos</span><span>•</span><span>Drone</span><span>•</span><span>Real Estate</span><span>•</span><span>Social Content</span><span>•</span><span>Editing</span><span>•</span>
     <span>Weddings</span><span>•</span><span>Cinematic Films</span><span>•</span><span>Corporate</span><span>•</span><span>Events</span><span>•</span><span>Portraits</span><span>•</span><span>Headshots</span><span>•</span><span>Commercials</span><span>•</span><span>Music Videos</span><span>•</span><span>Drone</span><span>•</span><span>Real Estate</span><span>•</span><span>Social Content</span><span>•</span><span>Editing</span><span>•</span>
@@ -121,22 +114,53 @@
     <div class="sec-head reveal">
       <p class="eyebrow">§ Selected work</p>
       <h2 class="sec-title">Selected work.</h2>
-      <p class="sec-lead">A look at what we create. Click any to enlarge.</p>
+      <p class="sec-lead">Watch the reel, then open any still to see it larger. Every frame below comes from real Urbanlifevisuals shoots.</p>
     </div>
-    <div class="work-grid">
-      <figure class="work reveal" data-full="assets/work-web.jpg" data-caption="Websites that showcase your brand">
-        <img src="assets/work-web.jpg" alt="Website design project" />
-        <figcaption><span class="work__tag">Web</span><h3>Portfolio &amp; brand websites</h3></figcaption>
-      </figure>
-      <figure class="work reveal" data-full="assets/work-analytics.jpg" data-caption="Content &amp; campaign analytics">
-        <img src="assets/work-analytics.jpg" alt="Marketing analytics project" />
-        <figcaption><span class="work__tag">Marketing</span><h3>Content that performs</h3></figcaption>
-      </figure>
-      <figure class="work reveal" data-full="assets/work-mobile.jpg" data-caption="Mobile-first experiences">
-        <img src="assets/work-mobile.jpg" alt="Mobile design project" />
-        <figcaption><span class="work__tag">Social</span><h3>Built for every screen</h3></figcaption>
-      </figure>
-    </div>
+    <figure class="reel reveal">
+      <video class="reel__video" controls playsinline preload="none" poster="assets/hero-reel-poster.jpg">
+        <source src="assets/hero-reel.mp4" type="video/mp4" />
+        Your browser can't play this video. <a href="assets/hero-reel.mp4">Download the reel</a>.
+      </video>
+      <figcaption><span class="work__tag">Film</span> Urbanlifevisuals reel — weddings, commercial, events, real estate, drone and creative work. 1 min.</figcaption>
+    </figure>
+    <ul class="work-grid" role="list">
+      <li class="work reveal">
+        <button class="work__btn" type="button" data-full="assets/work-engagement.jpg" data-caption="Engagement session — Weddings &amp; Engagements. Still from the Urbanlifevisuals reel.">
+          <img src="assets/work-engagement.jpg" alt="Couple embracing in an open field, warm natural light" loading="lazy" />
+          <span class="work__cap"><span class="work__tag">Weddings &amp; Engagements</span><span class="work__title">Engagement session</span><span class="work__meta">Still from the reel · open preview</span></span>
+        </button>
+      </li>
+      <li class="work reveal">
+        <button class="work__btn" type="button" data-full="assets/work-restaurant.jpg" data-caption="Restaurant promo — Commercial. Still from the Urbanlifevisuals reel.">
+          <img src="assets/work-restaurant.jpg" alt="Chef plating a dish in a commercial kitchen" loading="lazy" />
+          <span class="work__cap"><span class="work__tag">Commercial</span><span class="work__title">Restaurant promo</span><span class="work__meta">Still from the reel · open preview</span></span>
+        </button>
+      </li>
+      <li class="work reveal">
+        <button class="work__btn" type="button" data-full="assets/work-event.jpg" data-caption="Real estate team event — Events. Still from the Urbanlifevisuals reel.">
+          <img src="assets/work-event.jpg" alt="Guests at a branded Team Harris booth with balloons" loading="lazy" />
+          <span class="work__cap"><span class="work__tag">Events</span><span class="work__title">Real estate team event</span><span class="work__meta">Still from the reel · open preview</span></span>
+        </button>
+      </li>
+      <li class="work reveal">
+        <button class="work__btn" type="button" data-full="assets/work-realestate.jpg" data-caption="Property exterior — Real Estate. Still from the Urbanlifevisuals reel.">
+          <img src="assets/work-realestate.jpg" alt="Front of a single-family home with driveway and landscaping" loading="lazy" />
+          <span class="work__cap"><span class="work__tag">Real Estate</span><span class="work__title">Property exterior</span><span class="work__meta">Still from the reel · open preview</span></span>
+        </button>
+      </li>
+      <li class="work reveal">
+        <button class="work__btn" type="button" data-full="assets/work-drone.jpg" data-caption="Aerial footage — Drone. Still from the Urbanlifevisuals reel.">
+          <img src="assets/work-drone.jpg" alt="Top-down aerial view over grass and brush" loading="lazy" />
+          <span class="work__cap"><span class="work__tag">Drone</span><span class="work__title">Aerial footage</span><span class="work__meta">Still from the reel · open preview</span></span>
+        </button>
+      </li>
+      <li class="work reveal">
+        <button class="work__btn" type="button" data-full="assets/work-moto.jpg" data-caption="Motorsport shoot — Creative. Still from the Urbanlifevisuals reel.">
+          <img src="assets/work-moto.jpg" alt="Rider in gear beside a sport motorcycle" loading="lazy" />
+          <span class="work__cap"><span class="work__tag">Creative</span><span class="work__title">Motorsport shoot</span><span class="work__meta">Still from the reel · open preview</span></span>
+        </button>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -156,7 +180,7 @@
   </div>
 </section>
 
-<!-- INTERACTIVE ROI ESTIMATOR -->
+<!-- QUOTE BUILDER -->
 <section class="section section--alt" id="estimator">
   <div class="container">
     <div class="sec-head reveal">
@@ -168,30 +192,31 @@
     <div class="roi reveal">
       <div class="roi__controls">
         <div class="roi__field">
-          <label>Hours of coverage <output id="outHours">4 hrs</output></label>
+          <label for="hours">Hours of coverage <output id="outHours">4 hrs</output></label>
           <input type="range" id="hours" min="1" max="12" step="1" value="4" />
         </div>
         <div class="roi__field">
-          <label>Shooters on site <output id="outShooters">1</output></label>
+          <label for="shooters">Shooters on site <output id="outShooters">1</output></label>
           <input type="range" id="shooters" min="1" max="3" step="1" value="1" />
         </div>
         <div class="roi__field">
-          <label>Edited photos <output id="outPhotos">100</output></label>
+          <label for="photos">Edited photos <output id="outPhotos">100</output></label>
           <input type="range" id="photos" min="0" max="800" step="25" value="100" />
         </div>
         <div class="roi__field">
-          <label>Finished video length <output id="outVideo">3 min</output></label>
+          <label for="video">Finished video length <output id="outVideo">3 min</output></label>
           <input type="range" id="video" min="0" max="30" step="1" value="3" />
         </div>
       </div>
-      <div class="roi__results">
+      <div class="roi__results" aria-live="polite">
         <div class="roi__big"><span id="resTotal">$0</span><small>estimated starting price</small></div>
         <div class="roi__row">
           <div class="roi__cell"><span id="resDeliv">0</span><small>photos + films delivered</small></div>
           <div class="roi__cell"><span id="resTurn">0 wks</span><small>est. turnaround</small></div>
         </div>
         <div class="roi__roas">Includes planning, editing &amp; online gallery.</div>
-        <a href="#contact" class="btn btn--cyan btn--full">Get my custom quote →</a>
+        <p class="roi__note">Turnaround grows with coverage, crew size, photo count and film length. Not included: travel outside the local area, rush delivery, prints &amp; albums, and location or permit fees.</p>
+        <button type="button" class="btn btn--cyan btn--full" id="usePackage">Request this package →</button>
       </div>
     </div>
   </div>
@@ -219,14 +244,14 @@
         <li><span>◎</span> Available for local shoots &amp; travel</li>
       </ul>
     </div>
-    <form class="contact__form reveal" id="contactForm" novalidate>
-      <div class="field"><label for="name">Name</label><input id="name" required placeholder="Your name" /></div>
+    <form class="contact__form reveal" id="contactForm" novalidate aria-describedby="formNote">
+      <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required placeholder="Your name" /></div>
       <div class="field-row">
-        <div class="field"><label for="email">Email</label><input id="email" type="email" required placeholder="you@email.com" /></div>
-        <div class="field"><label for="date">Event date</label><input id="date" type="date" /></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@email.com" /></div>
+        <div class="field"><label for="date">Event date</label><input id="date" name="event_date" type="date" /></div>
       </div>
       <div class="field"><label for="need">What do you need?</label>
-        <select id="need">
+        <select id="need" name="service">
           <option>Wedding / engagement</option>
           <option>Corporate / commercial</option>
           <option>Event / celebration</option>
@@ -237,12 +262,19 @@
           <option>Something else</option>
         </select>
       </div>
-      <div class="field"><label for="msg">Project details</label><textarea id="msg" rows="4" placeholder="Location, guest count, style, ideas…"></textarea></div>
-      <button type="submit" class="btn btn--cyan btn--full">Send Booking Request</button>
-      <p class="form__note" id="formNote" hidden>Thanks! Your request is ready — connect a form service to deliver it (see README).</p>
+      <div class="field field--package" id="packageField" hidden>
+        <label for="package">Package from the quote builder</label>
+        <div class="package-row"><textarea id="package" name="package" rows="2" readonly></textarea><button type="button" class="btn btn--ghost btn--sm" id="clearPackage">Remove</button></div>
+      </div>
+      <div class="field"><label for="msg">Project details</label><textarea id="msg" name="message" rows="4" placeholder="Location, guest count, style, ideas…"></textarea></div>
+      <div class="hp" aria-hidden="true"><label for="company">Leave this empty</label><input id="company" name="_gotcha" tabindex="-1" autocomplete="off" /></div>
+      <button type="submit" class="btn btn--cyan btn--full" id="formSubmit">Send Booking Request</button>
+      <p class="form__note" id="formNote" role="status" aria-live="polite"></p>
     </form>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -259,8 +291,8 @@
 </footer>
 
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" aria-hidden="true">
-  <button class="lightbox__close" id="lightboxClose" aria-label="Close">×</button>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo preview" hidden>
+  <button class="lightbox__close" id="lightboxClose" type="button" aria-label="Close preview">×</button>
   <figure><img id="lightboxImg" src="" alt="" /><figcaption id="lightboxCap"></figcaption></figure>
 </div>
 

@@ -24,14 +24,15 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 |---|---|
 | `hero-reel.mp4` | Hero background (60s cut of the reel, letterbox cropped, ~7 MB) |
 | `hero-reel-poster.jpg` | Hero video poster |
-| `work-*.jpg` | Selected Work cards (replace with portfolio shots) |
+| `work-*.jpg` | Selected Work stills, exported from the reel with ffmpeg |
 
 ## Customize before going live
-- Replace placeholder **stats** in `index.html` with real numbers
-- Set real **pricing** at the top of the quote builder in `script.js`
+- Set real pricing (and the editing-speed assumptions) at the top of `script.js`
+- Booking delivery: paste a Formspree endpoint into `FORM_ENDPOINT` in `script.js`. Until then the form opens the visitor's email app addressed to `erwinurbano@urbanlifevisuals.com`; it never shows a "sent" confirmation it can't back up
+- Add a short bio, home base / service area, and real client testimonials
+- For each portfolio piece, add your role and the deliverables (e.g. "Shot & edited — 3-min highlight film + 400 photos")
 - ~~Update **contact** info~~ — done: `erwinurbano@urbanlifevisuals.com`, `(707) 704-9567`
-- Wire the **booking form** to a service (Formspree/Netlify) — currently front-end only
-- Swap **Selected Work** images for real portfolio shots
+- ~~Placeholder stats~~ — removed until there are verified numbers
 
 ## Reference
 Design language inspired by 47industries.com — dark, bold, technical.
